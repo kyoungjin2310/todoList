@@ -39,11 +39,11 @@ const reducer = createReducer<TodosState, TodosAction>(initialState, {
   [CLEAR_TODO]: (state) => [],
   [NOT_SELECT_TODO]: (state) =>
     state.map((todo) =>
-      !todo.done ? { ...todo, active: true } : { ...todo, active: false }
+      !todo.done ? { ...todo, active: false } : { ...todo, active: true }
     ),
   [SELECT_TODO]: (state) =>
     state.map((todo) =>
-      todo.done ? { ...todo, active: true } : { ...todo, active: false }
+      todo.done ? { ...todo, active: false } : { ...todo, active: true }
     ),
 });
 
