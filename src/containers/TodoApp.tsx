@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../modules";
 import {
@@ -15,6 +15,7 @@ import TodoList from "../components/TodoList";
 import TodoListFilter from "../components/TodoListFilter";
 
 function TodoApp() {
+  const [isOpen, setOpen] = useState(true);
   const todos = useSelector((state: RootState) => state.todos);
   const dispatch = useDispatch();
 
@@ -46,17 +47,32 @@ function TodoApp() {
     dispatch(notSelectTodo());
   };
 
+  const hendleOpen = () => {
+    setOpen(!isOpen);
+  };
+
   return (
     <>
-      <TodoInsert onInsert={onInsert} />
-      <TodoList todos={todos} onToggle={onToggle} onRemove={onRemove} />
-      <TodoListFilter
-        todos={todos}
-        onAllSelect={onAllSelect}
-        onClearSelect={onClearSelect}
-        onSelectTodo={onSelectTodo}
-        onNotSelectTodo={onNotSelectTodo}
-      />
+      <h1 className="title">todos</h1>
+      <div className="wrap">
+        <span
+          className={isOpen ? "close" : "close active"}
+          onClick={hendleOpen}
+        >
+          &gt;
+        </span>
+        <TodoInsert onInsert={onInsert} />
+        <div className={isOpen ? undefined : "hide"}>
+          <TodoList todos={todos} onToggle={onToggle} onRemove={onRemove} />
+        </div>
+        <TodoListFilter
+          todos={todos}
+          onAllSelect={onAllSelect}
+          onClearSelect={onClearSelect}
+          onSelectTodo={onSelectTodo}
+          onNotSelectTodo={onNotSelectTodo}
+        />
+      </div>
     </>
   );
 }

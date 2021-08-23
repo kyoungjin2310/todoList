@@ -12,10 +12,6 @@ function TodoItem({ todo, onToggle, onRemove }: TodoItemProps) {
   const textStyle: CSSProperties = {
     textDecoration: todo.done ? "line-through" : "none",
   };
-  const removeStyle: CSSProperties = {
-    marginLeft: 8,
-    color: "red",
-  };
 
   const handleToggle = () => {
     onToggle(todo.id);
@@ -27,16 +23,21 @@ function TodoItem({ todo, onToggle, onRemove }: TodoItemProps) {
 
   return (
     <li className={todo.active ? "on" : "hide"}>
-      <div>
-        <input onClick={handleToggle} type="checkbox" id={`${todo.id}`} />
+      <div className="inputWrap">
+        <input
+          onClick={handleToggle}
+          type="checkbox"
+          id={`${todo.id}`}
+          className="checkbox"
+        />
         <label
           htmlFor={`${todo.id}`}
           className={todo.done ? "active" : undefined}
         >
           {todo.text}
         </label>
-        <span className="delete" onClick={handleRemove} style={removeStyle}>
-          (X)
+        <span className="delete" onClick={handleRemove}>
+          X
         </span>
       </div>
     </li>

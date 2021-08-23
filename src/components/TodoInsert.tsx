@@ -16,13 +16,13 @@ function TodoInsert({ onInsert }: TodoInsertProps) {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="form">
       <input
+        className="todoList"
         placeholder="What needs to be done?"
         value={value}
         onChange={onChange}
       />
-      <button type="submit">등록</button>
     </form>
   );
 }

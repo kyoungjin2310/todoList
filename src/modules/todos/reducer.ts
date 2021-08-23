@@ -11,7 +11,14 @@ import {
 } from "./action";
 
 // 초기 상태 선언
-const initialState: TodosState = [];
+const initialState: TodosState = [
+  {
+    id: 0,
+    text: "example",
+    done: false,
+    active: true,
+  },
+];
 
 // 리듀서 작성
 const reducer = createReducer<TodosState, TodosAction>(initialState, {
