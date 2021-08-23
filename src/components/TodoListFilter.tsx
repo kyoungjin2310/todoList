@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { MouseEvent } from "react";
 import { Todo } from "../modules/todos";
 
 type TodoListFilterProps = {
@@ -16,9 +16,7 @@ function TodoListFilter({
   onSelectTodo,
   onNotSelectTodo,
 }: TodoListFilterProps) {
-  const onActiveClass = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ) => {
+  const onActiveClass = (e: MouseEvent<HTMLAnchorElement>) => {
     const el = document.querySelectorAll(".filterList li a");
     const target = Array.prototype.slice.call(el);
     for (let i = 0; i < el.length; i++) {
@@ -27,29 +25,21 @@ function TodoListFilter({
     (e.target as Element).classList.add("active");
   };
 
-  const handleAllSelect = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ) => {
+  const handleAllSelect = (e: MouseEvent<HTMLAnchorElement>) => {
     onActiveClass(e);
     onAllSelect();
   };
 
-  const handleSelectTodo = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ) => {
+  const handleSelectTodo = (e: MouseEvent<HTMLAnchorElement>) => {
     onActiveClass(e);
     onSelectTodo();
   };
-  const handleNotSelectTodo = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ) => {
+  const handleNotSelectTodo = (e: MouseEvent<HTMLAnchorElement>) => {
     onActiveClass(e);
     onNotSelectTodo();
   };
 
-  const handleClearSelect = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ) => {
+  const handleClearSelect = (e: MouseEvent<HTMLAnchorElement>) => {
     onActiveClass(e);
     onClearSelect();
   };
