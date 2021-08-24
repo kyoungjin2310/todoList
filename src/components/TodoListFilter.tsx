@@ -46,7 +46,9 @@ function TodoListFilter({
   return (
     <ul className="filterList">
       <li className="length">
-        <span>{todos.length} items left</span>
+        <span>
+          {todos.filter((todo) => todo.done === false).length} items left
+        </span>
       </li>
       <li>
         <a href="#" className="active" onClick={(e) => handleAllSelect(e)}>
