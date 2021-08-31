@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React from "react";
 import { Todo } from "../modules/todos";
 
 type TodoItemProps = {
@@ -8,11 +8,6 @@ type TodoItemProps = {
 };
 
 function TodoItem({ todo, onToggle, onRemove }: TodoItemProps) {
-  // CSSProperties 는 style 객체의 타입입니다.
-  const textStyle: CSSProperties = {
-    textDecoration: todo.done ? "line-through" : "none",
-  };
-
   const handleToggle = () => {
     onToggle(todo.id);
   };

@@ -10,7 +10,7 @@ import {
   SELECT_TODO,
 } from "./action";
 
-// 초기 상태 선언
+// 초기 상태
 const initialState: TodosState = [
   {
     id: 0,
@@ -20,14 +20,13 @@ const initialState: TodosState = [
   },
 ];
 
-// 리듀서 작성
+// reducer
 const reducer = createReducer<TodosState, TodosAction>(initialState, {
   [ADD_TODO]: (state, action) =>
     state.concat({
-      ...action.payload, // id, text 를 이 안에 넣기
+      ...action.payload,
       done: false,
     }),
-  // 바구조화 할당을 활용하여 payload 값의 이름을 바꿀 수 있음
   [TOGGLE_TODO]: (state, { payload: id }) =>
     state.map((todo) =>
       todo.id === id ? { ...todo, done: !todo.done } : todo
