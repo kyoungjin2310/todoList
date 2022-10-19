@@ -13,8 +13,26 @@ import {
 // 초기 상태
 const initialState: TodosState = [
   {
-    id: 0,
-    text: "example",
+    id: 1,
+    text: "todo1",
+    done: false,
+    active: true,
+  },
+  {
+    id: 2,
+    text: "todo2",
+    done: false,
+    active: true,
+  },
+  {
+    id: 3,
+    text: "todo3",
+    done: true,
+    active: false,
+  },
+  {
+    id: 4,
+    text: "todo4",
     done: false,
     active: true,
   },
